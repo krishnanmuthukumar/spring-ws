@@ -27,10 +27,10 @@ public class AccountController {
             @RequestParam BigDecimal amount) {
 
         try {
-            transferService.transfer(fromAccount, toAccount, amount);
+            transferService.transferWithRequiredAudit(fromAccount, toAccount, amount);
             return ResponseEntity.ok("Transfer successful");
-        } catch (InsufficientBalanceException e) {
-            return ResponseEntity.badRequest().body("Insufficient balance");
+//        } catch (InsufficientBalanceException e) {
+//            return ResponseEntity.badRequest().body("Insufficient balance");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Invalid account number or request");
         }

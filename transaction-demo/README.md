@@ -18,6 +18,7 @@ The application simulates transferring money between two bank accounts. It demon
 - `Account` - JPA entity representing a bank account
 - `AccountRepository` - Repository for accessing accounts
 - `TransferService` - Business logic for transferring money
+- `AuditService` - Logs transfer audit information and demonstrates `REQUIRED` propagation
 - `AccountController` - REST endpoint for transfers
 - `InsufficientBalanceException` - Exception raised when an account has insufficient funds
 
@@ -82,24 +83,21 @@ Windows PowerShell:
 .\mvnw.cmd test
 ```
 
-## Transaction Exercise
+## Transaction Scenarios
 
-The transaction boundary belongs on `TransferService.transfer()`:
+`TransferService` contains focused methods for comparing Spring transaction behavior:
 
-```java
-@Transactional
-public void transfer(...) {
-    // debit source account
-    // credit destination account
-}
-```
+| Method | Configuration | Expected result |
+| --- | --- | --- |
+| `transfer()` | Default `@Transactional` | A checked exception does not automatically trigger rollback. |
+| `transferWithRollbackFor()` | `rollbackFor = InsufficientBalanceException.class` | Both account updates roll back for the checked exception. |
+| `transferWithNoRollbackFor()` | `noRollbackFor = RuntimeException.class` | Both account updates remain committed after the runtime exception. |
+| `transferAndFail()` | Default `@Transactional` | Both account updates roll back after the runtime exception. |
+| `transferWithRequiredAudit()` | `propagation = Propagation.REQUIRED` | The audit call joins the transfer transaction and rolls back with it. |
 
-The `@Transactional` annotation is currently commented out intentionally. The service also throws an exception after saving the debit account. This makes it possible to compare the behavior of a transfer with and without a transaction:
+`AuditService.audit()` also uses `Propagation.REQUIRED`. Both the transfer method and the audit method log whether a transaction is active using `TransactionSynchronizationManager`.
 
-- Without a transaction, the debit may be persisted before the failure.
-- With `@Transactional`, the debit and credit should roll back together when an unchecked exception occurs.
-
-Uncomment `@Transactional` in `TransferService` and run the tests again to study rollback behavior.
+The integration tests in `TransferServiceTest` verify the expected balances after each rollback or commit scenario.
 
 ## Example Transfer
 
