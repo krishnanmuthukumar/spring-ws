@@ -18,7 +18,9 @@ The application simulates transferring money between two bank accounts. It demon
 - `Account` - JPA entity representing a bank account
 - `AccountRepository` - Repository for accessing accounts
 - `TransferService` - Business logic for transferring money
-- `AuditService` - Logs transfer audit information and demonstrates `REQUIRED` propagation
+- `AuditService` - Persists transfer audit information using `REQUIRED` and `REQUIRES_NEW` propagation
+- `JdbcTransferService` - Demonstrates JDBC transfers with nested audit savepoints
+- `AuditJdbcService` - Writes audit rows with `JdbcTemplate` and `NESTED` propagation
 - `AccountController` - REST endpoint for transfers
 - `InsufficientBalanceException` - Exception raised when an account has insufficient funds
 
@@ -93,11 +95,16 @@ Windows PowerShell:
 | `transferWithRollbackFor()` | `rollbackFor = InsufficientBalanceException.class` | Both account updates roll back for the checked exception. |
 | `transferWithNoRollbackFor()` | `noRollbackFor = RuntimeException.class` | Both account updates remain committed after the runtime exception. |
 | `transferAndFail()` | Default `@Transactional` | Both account updates roll back after the runtime exception. |
-| `transferWithRequiredAudit()` | `propagation = Propagation.REQUIRED` | The audit call joins the transfer transaction and rolls back with it. |
+| `transferWithRequiredAudit()` | Audit uses `propagation = Propagation.REQUIRED` | The forced transfer failure rolls back both account updates and the audit record. |
+| `transferWithRequiresNewAudit()` | Audit uses `propagation = Propagation.REQUIRES_NEW` | The audit method's deliberate exception rolls back its insert; the transfer catches it and commits the account updates. |
+| `JdbcTransferService.transfer()` | JDBC outer transaction catches the nested audit failure | Account changes commit; the nested audit insert rolls back to its savepoint. |
+| `JdbcTransferService.transferWithoutCatchingAuditFailure()` | JDBC outer transaction lets the nested audit failure escape | The audit insert rolls back to its savepoint, then the outer transaction rolls back the account changes. |
 
-`AuditService.audit()` also uses `Propagation.REQUIRED`. Both the transfer method and the audit method log whether a transaction is active using `TransactionSynchronizationManager`.
+`AuditService.audit()` saves an `AuditLog` record in the `audit_log` table using `Propagation.REQUIRED`. `AuditService.auditWithRequiresNew()` saves in an independent transaction and then deliberately throws; this demonstrates that the audit transaction rolls back independently while the caller can catch the exception and commit its own transaction. Both the transfer method and the audit method log whether a transaction is active using `TransactionSynchronizationManager`.
 
-The integration tests in `TransferServiceTest` verify the expected balances after each rollback or commit scenario.
+`JdbcTransferService` uses `JdbcTemplate` for both account updates and uses the `jdbcTransactionManager` for its outer transaction. `AuditJdbcService.auditAndFail()` also uses that manager with `Propagation.NESTED`, so its insert is protected by a JDBC savepoint. The JPA transaction manager remains primary for the JPA services; the JDBC examples explicitly select `jdbcTransactionManager`.
+
+The integration tests in `TransferServiceTest` verify the expected account balances and audit rows for each rollback or commit scenario.
 
 ## Example Transfer
 

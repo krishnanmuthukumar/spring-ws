@@ -19,10 +19,13 @@ public class TransferService {
 
 	private final AccountRepository accountRepository;
 	private final AuditService auditService;
+	private final AuditJdbcService auditJdbcService;
 
-	public TransferService(AccountRepository accountRepository, AuditService auditService) {
+	public TransferService(AccountRepository accountRepository, AuditService auditService,
+			AuditJdbcService auditJdbcService) {
 		this.accountRepository = accountRepository;
 		this.auditService = auditService;
+		this.auditJdbcService = auditJdbcService;
 	}
 
 	/**
@@ -151,9 +154,9 @@ public class TransferService {
 	}
 
 	/**
-	 * Demonstrates REQUIRED propagation by calling the audit service from the
-	 * transfer transaction. The audit call joins this transaction, and the forced
-	 * failure rolls back the account updates as one unit.
+	 * Demonstrates REQUIRED propagation: the audit joins the transfer transaction.
+	 * The forced failure after the audit call rolls back both the account updates
+	 * and the audit record.
 	 *
 	 * @param fromAccount account to debit
 	 * @param toAccount account to credit
@@ -180,5 +183,60 @@ public class TransferService {
 		auditService.audit("transferWithRequiredAudit", fromAccount, toAccount, amount, "UPDATED");
 
 		throw new RuntimeException("Something went wrong after audit");
+	}
+
+	/**
+	 * Demonstrates REQUIRES_NEW propagation for auditing. The audit method deliberately
+	 * throws after saving, so its independent transaction rolls back; this method catches
+	 * that exception and completes normally, allowing the account updates to commit.
+	 *
+	 * @param fromAccount account to debit
+	 * @param toAccount account to credit
+	 * @param amount transfer amount
+	 */
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void transferWithRequiresNewAudit(String fromAccount, String toAccount, BigDecimal amount) {
+		logger.info("Starting transfer with REQUIRES_NEW audit from {} to {} for amount {}",
+				fromAccount, toAccount, amount);
+
+		Account from = accountRepository.findByAccountNumber(fromAccount).orElseThrow();
+		Account to = accountRepository.findByAccountNumber(toAccount).orElseThrow();
+
+		from.setBalance(from.getBalance().subtract(amount));
+		accountRepository.save(from);
+
+		to.setBalance(to.getBalance().add(amount));
+		accountRepository.save(to);
+
+		try {
+			auditService.auditWithRequiresNew("transferWithRequiresNewAudit", fromAccount, toAccount, amount,
+					"UPDATED");
+		} catch (RuntimeException ex) {
+			logger.error("Audit Failed", ex);
+		}
+
+		//throw new RuntimeException("Something went wrong after REQUIRES_NEW audit");
+	}
+
+	/**
+	 * Transfers funds and writes an audit row inside a nested JDBC transaction.
+	 * The audit insert and account updates commit together when this method succeeds.
+	 *
+	 * @param fromAccount account to debit
+	 * @param toAccount account to credit
+	 * @param amount transfer amount
+	 */
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void transferWithJdbcAudit(String fromAccount, String toAccount, BigDecimal amount) {
+		Account from = accountRepository.findByAccountNumber(fromAccount).orElseThrow();
+		Account to = accountRepository.findByAccountNumber(toAccount).orElseThrow();
+
+		from.setBalance(from.getBalance().subtract(amount));
+		accountRepository.save(from);
+
+		to.setBalance(to.getBalance().add(amount));
+		accountRepository.save(to);
+
+		auditJdbcService.auditAndFail("transferWithJdbcAudit", fromAccount, toAccount, amount, "UPDATED");
 	}
 }
