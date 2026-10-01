@@ -1,0 +1,6 @@
+[INFO] payment-service - Payment initiated
+[FINE] order-service - Debug details for a new order
+[INFO] order-service - Order received
+[WARNING] order-service - Payment is taking longer than expected
+[SEVERE] order-service - Could not save the order
+[INFO] payment-service - Payment initiated

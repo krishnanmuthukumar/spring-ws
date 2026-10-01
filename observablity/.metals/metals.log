@@ -1,0 +1,74 @@
+2026.10.01 14:25:48 WARN  Using H2 2.5.250 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.10.01 14:25:49 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:49 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:50 WARN  no build tool detected in workspace 'C:\Krishnan\Java\spring-ws\observablity'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2026.10.01 14:25:50 WARN  Build server is not auto-connectable.
+2026.10.01 14:25:50 WARN  no build target for: C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:51 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:51 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:51 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 12
+2026.10.01 14:25:51 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 15
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 16
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 19
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 21
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 22
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 23
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 25
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 27
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:25:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 28
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:52 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:54 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:54 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:54 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:55 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:55 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:25:58 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+Oct 01, 2026 2:26:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.10.01 14:26:06 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:26:09 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:26:10 INFO  no build target found for C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java. Using fallback presentation compiler.
+2026.10.01 14:26:11 WARN  no build target for: C:\Krishnan\Java\spring-ws\observablity\level-1-core-java\PlainJavaLoggingDemo.java
