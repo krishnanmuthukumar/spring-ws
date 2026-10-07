@@ -1,2 +1,5 @@
 target/
 level-2-slf4j/target/
+level-2-slf4j/.classpath
+level-2-slf4j/.project
+level-2-slf4j/.settings
