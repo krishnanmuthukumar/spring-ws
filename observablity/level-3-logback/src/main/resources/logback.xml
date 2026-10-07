@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="MY_APPENDER"
+		class="com.example.logging.MyAppender">
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="MY_APPENDER" />
+	</root>
+
+</configuration>
