@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<shutdownHook />
 
+	<!-- <appender name="MY_APPENDER" class="com.example.logging.MyAppender"> -->
 	<appender name="MY_APPENDER"
-		class="com.example.logging.MyAppender">
+		class="com.example.logging.MyAppenderWithEncoder">
+		<filter class="com.example.logging.SensitiveDataFilter" />
+		<encoder class="com.example.logging.MyEncoder" />
 	</appender>
 	<root level="INFO">
 		<appender-ref ref="MY_APPENDER" />
