@@ -6,3 +6,4 @@ level-2-slf4j/.settings
 level-3-logback/.classpath
 level-3-logback/.project
 level-3-logback/.settings
+level-3-logback/logs/

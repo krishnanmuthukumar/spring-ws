@@ -1,58 +1,44 @@
 # Level 3: Logback
 
-This Maven project builds on the SLF4J exercise and explores Logback configuration, a custom appender, and a custom encoder. The next planned experiment is filtering sensitive data before it is written to the output.
+This Maven project demonstrates SLF4J logging with Logback, a custom console appender and encoder, sensitive-data filtering, and a separate rolling-file configuration.
 
-## Project Files
+## Project files
 
 | File | Purpose |
 | --- | --- |
-| `src/main/java/com/example/logging/Application.java` | Emits INFO, WARN, and ERROR events, including a parameterized message and an error with an exception. |
-| `src/main/java/com/example/logging/MyAppender.java` | Custom appender that passes each event to `MyEncoder` and writes the encoded bytes to the console. |
-| `src/main/java/com/example/logging/MyEncoder.java` | Formats each event with a `MY-ENCODER` prefix and provides header and footer bytes. |
-| `src/main/resources/logback.xml` | Configures the custom appender and encoder, attaches the appender to the INFO-level root logger, and registers a shutdown hook. |
+| `src/main/java/com/example/logging/Application.java` | Emits sample INFO, WARN, and ERROR events, including sensitive-data examples and 500 rollover test messages. |
+| `src/main/java/com/example/logging/MyAppender.java` | Custom appender that writes encoded logging events to the console. |
+| `src/main/java/com/example/logging/MyAppenderWithEncoder.java` | Custom appender that delegates event formatting to `MyEncoder`. |
+| `src/main/java/com/example/logging/MyEncoder.java` | Formats logging events and supplies encoder header and footer bytes. |
+| `src/main/java/com/example/logging/SensitiveDataFilter.java` | Denies messages containing `password`, `token`, or `secret`. |
+| `src/main/resources/logback.xml` | Default configuration for the custom console appender and sensitive-data filter. |
+| `src/main/resources/logback-rolling.xml` | Alternative configuration for rolling plain-text log files. |
 | `pom.xml` | Defines the Java 11 Maven project and its SLF4J and Logback dependencies. |
 
-## Mental Model
+## Default console configuration
 
-```text
-Application
-    -> SLF4J Logger API
-    -> Logback creates and filters a logging event
-    -> MyAppender receives the event
-    -> MyEncoder formats the event as bytes
-    -> MyAppender writes the bytes to the console
-```
+The default `logback.xml` attaches `MyAppenderWithEncoder` to the INFO-level root logger and installs `SensitiveDataFilter`. The filter denies messages containing `password`, `token`, or `secret`; accepted events are formatted by `MyEncoder` and written to the console.
 
-The root logger accepts INFO, WARN, and ERROR events. Events below INFO are filtered before they reach the appender. The appender delegates formatting to the encoder, keeping event routing and output formatting in separate components.
-
-## Experiment 1: Route events through a custom appender
-
-`MyAppender` extends Logback's `AppenderBase` and is attached to the root logger in `logback.xml`. Logback creates the appender from the XML configuration and supplies its nested encoder through `setEncoder`. The appender receives accepted events and sends them to the encoder.
-
-## Experiment 2: Format events with a custom encoder
-
-`MyEncoder` extends `EncoderBase<ILoggingEvent>`. Its `encode` method includes the event level, logger name, and formatted message in each output line. For example, the parameterized message `Order {}` with the argument `ORD-123` is encoded as `Order ORD-123`.
-
-The encoder also supplies header and footer bytes. `MyAppender` writes the header when it starts and the footer when it stops. The footer therefore appears only when Logback stops the appender, such as when its logger context is stopped. A JVM shutdown hook is configured to stop Logback when the standalone process exits.
-
-Run the application from this directory:
+Run from this project directory to use the default configuration:
 
 ```powershell
 mvn exec:java '-Dexec.mainClass=com.example.logging.Application'
 ```
 
-Example event output:
+## Rolling-file configuration
 
-```text
-MY-ENCODER | INFO | com.example.logging.Application | Application started
-MY-ENCODER | INFO | com.example.logging.Application | Order ORD-123 created
-MY-ENCODER | WARN | com.example.logging.Application | This is a warning
-MY-ENCODER | ERROR | com.example.logging.Application | Something went wrong
-MY-ENCODER | ERROR | com.example.logging.Application | Order processing failed
+`logback-rolling.xml` is an alternative configuration. It writes to `logs/application.log` and uses `SizeAndTimeBasedRollingPolicy`:
+
+- A rollover is triggered when the active file reaches 5 KB.
+- Rolled files are uncompressed and named with the date and an index, for example `application.2026-10-11.0.log`.
+- `maxHistory` is 3; with a daily date pattern, Logback retains archives for three days and removes older archives.
+- Multiple indexed files can be created during the same day as the size limit is reached repeatedly.
+- The rolling configuration uses Logback's standard file appender and writes each message with `%msg%n`.
+
+Select it explicitly when running the application:
+
+```powershell
+mvn '-Dlogback.configurationFile=src/main/resources/logback-rolling.xml' exec:java '-Dexec.mainClass=com.example.logging.Application'
 ```
 
-The encoder currently formats the message text, not the attached exception details. The final event includes a `RuntimeException`, but the custom encoder does not output its type or stack trace.
-
-## Next Experiment: Filter sensitive data
-
-Add a Logback filter that detects sensitive values in logging events and prevents them from being written, or masks them before output. Exercise it with representative messages containing sensitive data and verify the resulting logs do not expose the original values. The filtering stage should run before the appender writes the encoded event.
+`Application` emits 500 rollover test messages so the 5 KB threshold is crossed during a run. Check the `logs` directory for the active file and date-indexed archives. The rolling configuration does not include the sensitive-data filter from the default console configuration.

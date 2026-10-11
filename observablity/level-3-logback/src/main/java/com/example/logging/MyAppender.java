@@ -5,16 +5,16 @@ import ch.qos.logback.core.AppenderBase;
 
 public class MyAppender extends AppenderBase<ILoggingEvent> {
 
-    @Override
-    protected void append(ILoggingEvent event) {
+	@Override
+	protected void append(ILoggingEvent event) {
 
-        System.out.println("========== CUSTOM APPENDER ==========");
+		System.out.println("========== CUSTOM APPENDER ==========");
 
-        System.out.println("Logger  : " + event.getLoggerName());
-        System.out.println("Level   : " + event.getLevel());
-        System.out.println("Message : " + event.getFormattedMessage());
-        System.out.println("Thread  : " + event.getThreadName());
-        
+		System.out.println("Logger  : " + event.getLoggerName());
+		System.out.println("Level   : " + event.getLevel());
+		System.out.println("Message : " + event.getFormattedMessage());
+		System.out.println("Thread  : " + event.getThreadName());
+
 //        System.out.println("Logger       : " + event.getLoggerName());
 //        System.out.println("Level        : " + event.getLevel());
 //        System.out.println("Message      : " + event.getMessage());
@@ -27,6 +27,6 @@ public class MyAppender extends AppenderBase<ILoggingEvent> {
 //                    + event.getThrowableProxy().getClassName());
 //        }
 
-        System.out.println("=====================================");
-    }
+		System.out.println("=====================================");
+	}
 }

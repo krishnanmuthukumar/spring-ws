@@ -23,6 +23,10 @@ public class Application {
 
 		log.info("Authentication token is abc123");
 
+		for (int i = 1; i <= 500; i++) {
+			log.info("Rollover test message number {}: generating log output", i);
+		}
+
 		try {
 			throw new RuntimeException("Database unavailable");
 		} catch (Exception e) {
