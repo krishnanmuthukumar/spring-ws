@@ -7,3 +7,8 @@ level-3-logback/.classpath
 level-3-logback/.project
 level-3-logback/.settings
 level-3-logback/logs/
+
+level-4-spring-boot/.classpath
+level-4-spring-boot/.project
+level-4-spring-boot/.settings
+level-4-spring-boot/logs/
