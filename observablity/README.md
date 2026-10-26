@@ -56,3 +56,4 @@ In short: lower levels are more verbose; higher levels are more important and le
 - [Level 1: Core Java Logging](level-1-core-java/README.md) — plain Java logging with `java.util.logging` (JUL).
 - [Level 2: SLF4J API](level-2-slf4j/README.md) — SLF4J API, providers, log levels, and exception logging.
 - [Level 3: Logback](level-3-logback/README.md) — configure Logback and inspect events with a custom appender.
+- [Level 4: Spring Boot Logging](level-4-spring-boot/README.md) — configure Spring Boot logging levels, externalize the root logger level, and write logs to the console and a rolling file.
