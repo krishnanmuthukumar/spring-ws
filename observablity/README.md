@@ -53,6 +53,8 @@ In short: lower levels are more verbose; higher levels are more important and le
 
 ## Current Exercise Guides
 
+- [Level 5: Production Logging](level-5-production-logging/README.md) - add correlation IDs, safe exception handling, sensitive-data protection, environment-specific settings, and log retention practices.
+
 - [Level 1: Core Java Logging](level-1-core-java/README.md) — plain Java logging with `java.util.logging` (JUL).
 - [Level 2: SLF4J API](level-2-slf4j/README.md) — SLF4J API, providers, log levels, and exception logging.
 - [Level 3: Logback](level-3-logback/README.md) — configure Logback and inspect events with a custom appender.
