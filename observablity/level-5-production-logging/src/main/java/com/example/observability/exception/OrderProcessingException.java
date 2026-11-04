@@ -2,7 +2,12 @@ package com.example.observability.exception;
 
 public class OrderProcessingException extends RuntimeException {
 
-    public OrderProcessingException(String message, Throwable cause) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public OrderProcessingException(String message, Throwable cause) {
         super(message, cause);
     }
 }

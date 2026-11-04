@@ -1,9 +1,10 @@
 package com.example.observability.service;
 
-import com.example.observability.exception.OrderProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import com.example.observability.exception.OrderProcessingException;
 
 @Service
 public class OrderService {
@@ -18,6 +19,7 @@ public class OrderService {
             try {
                 simulateDependencyFailure(orderId);
             } catch (IllegalStateException exception) {
+                logger.error("Payment failed for order {}", orderId, exception);
                 throw new OrderProcessingException("Payment dependency failed for order " + orderId, exception);
             }
         }
