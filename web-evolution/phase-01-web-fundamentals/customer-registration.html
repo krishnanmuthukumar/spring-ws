@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 2rem auto;
+            max-width: 48rem;
+            padding: 0 1rem;
+        }
+
+        form {
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        input,
+        textarea {
+            box-sizing: border-box;
+            display: block;
+            margin-top: 0.35rem;
+            padding: 0.6rem;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.6rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Registration</h1>
+    <p>Compare how GET places form values in the URL while POST sends them in the request body.</p>
+
+    <h2>GET variant</h2>
+    <form action="customer-registration.html" method="get">
+        <label for="get-name">Name</label>
+        <input id="get-name" name="name" type="text" autocomplete="name" required>
+
+        <label for="get-email">Email</label>
+        <input id="get-email" name="email" type="email" autocomplete="email" required>
+
+        <label for="get-address">Address</label>
+        <textarea id="get-address" name="address" rows="4" autocomplete="street-address" required></textarea>
+
+        <button type="submit">Register with GET</button>
+    </form>
+
+    <h2>POST variant</h2>
+    <form action="customer-registration.html" method="post">
+        <label for="post-name">Name</label>
+        <input id="post-name" name="name" type="text" autocomplete="name" required>
+
+        <label for="post-email">Email</label>
+        <input id="post-email" name="email" type="email" autocomplete="email" required>
+
+        <label for="post-address">Address</label>
+        <textarea id="post-address" name="address" rows="4" autocomplete="street-address" required></textarea>
+
+        <button type="submit">Register with POST</button>
+    </form>
+</body>
+</html>

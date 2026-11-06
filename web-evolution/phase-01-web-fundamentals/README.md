@@ -32,7 +32,7 @@ sequenceDiagram
 - Concepts: HTML forms, labels, GET, POST, input names.
 - Tasks: create `customer-registration.html`; add name, email, and address; create GET and POST variants.
 - Expected result: both forms render and submit.
-- Acceptance: [ ] Every field has a label and `name`; [ ] submission is inspectable.
+- Acceptance: Every field has a label and `name`; submission is inspectable.
 - Optional challenge: add client-side required-field validation.
 
 ### 2. Inspect requests
@@ -40,13 +40,13 @@ sequenceDiagram
 - Objective: see how browser actions become HTTP messages.
 - Tasks: inspect GET query parameters and POST form data; compare `Content-Type` and headers.
 - Expected result: write `docs/learning-notes/phase-01-http-request-lifecycle.md`.
-- Acceptance: [ ] Explain where every submitted value appears.
+- Acceptance: Explain where every submitted value appears.
 
 ### 3. Status codes and request flow
 
 - Objective: connect outcomes to HTTP statuses.
 - Tasks: observe success, redirect, missing-resource, and client-error responses; draw the complete request flow.
-- Acceptance: [ ] Explain 200, 201, 302, 400, 404, and 500.
+- Acceptance: Explain 200, 201, 302, 400, 404, and 500.
 
 ## Build, inspect, and common mistakes
 
@@ -57,9 +57,9 @@ Serve the directory with a local static server and use Network → Headers, Payl
 1. Which component creates the request and response?
 2. Why can a GET be bookmarked while POST normally is not?
 
-- [ ] HTML registration page.
-- [ ] HTTP lifecycle notes and diagram.
-- [ ] I can explain how a request is formed, transported, handled, and returned.
+- HTML registration page.
+- HTTP lifecycle notes and diagram.
+- Explain how a request is formed, transported, handled, and returned.
 
 ## Transition
 
