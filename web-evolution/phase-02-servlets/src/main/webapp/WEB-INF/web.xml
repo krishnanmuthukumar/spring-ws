@@ -20,6 +20,16 @@
         <servlet-name>RequestLifecycleServlet</servlet-name>
         <url-pattern>/request-info</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>org.krish.learn.servlet.CustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>/customers</url-pattern>
+    </servlet-mapping>
+    
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
