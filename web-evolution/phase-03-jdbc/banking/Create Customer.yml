@@ -1,0 +1,24 @@
+info:
+  name: Create Customer
+  type: http
+
+http:
+  method: POST
+  url: http://localhost:8080/phase-03-jdbc/customers?first_name=Aaradhana&last_name=Krishnan&email=aaradhana@abc.com
+  params:
+    - name: first_name
+      value: Aaradhana
+      type: query
+    - name: last_name
+      value: Krishnan
+      type: query
+    - name: email
+      value: aaradhana@abc.com
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

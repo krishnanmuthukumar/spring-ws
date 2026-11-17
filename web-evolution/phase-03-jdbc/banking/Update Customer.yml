@@ -1,0 +1,28 @@
+info:
+  name: Update Customer
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: http://localhost:8080/phase-03-jdbc/customers?first_name=Poongodi&last_name=Krishnan&email=poongodi@abc.com&id=3
+  params:
+    - name: first_name
+      value: Poongodi
+      type: query
+    - name: last_name
+      value: Krishnan
+      type: query
+    - name: email
+      value: poongodi@abc.com
+      type: query
+    - name: id
+      value: "3"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
